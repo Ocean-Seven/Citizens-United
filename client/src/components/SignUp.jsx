@@ -74,10 +74,35 @@ const SignUp = ({ isVolunteer }) => {
   // Submits sign up to firebase & creates new user
   const submitForm = (e) => {
     e.preventDefault();
+    let validFields = false;
 
-    signup(fields.email, fields.password)
+    // Validates fields & throws error
+     Object.keys(fields).map(key => {
+      if (fields[key].length === 0) {
+        alert(`${key} cannot be blank`);
+        return;
+      } else if (key === 'phone' && fields[key].length !== 10) {
+        alert('Phone number must be 10 digits');
+        return;
+      }
+      return true;
+    });
+
+    // Checks if photo has been completely uploaded
+    if (progress === 0) {
+      validFields = false;
+      alert('Please upload a profile picture');
+    } else if (progress > 0 && progress < 100) {
+      validFields = false;
+      alert('Please wait until photo has completely uploaded!');
+    } else if (progress === 100) {
+      validFields = true;
+    }
+
+    // If all fields are valid, give user auth in firebase & create mongo user as well
+    if (validFields) {
+      signup(fields.email, fields.password)
       .then((res) => {
-        validateFields();
         res.user.updateProfile({
           displayName: `${fields.firstName} ${fields.lastName}`,
           photoURL: photoUrl,
@@ -96,17 +121,14 @@ const SignUp = ({ isVolunteer }) => {
           tasks: [],
         }
         axios.post(`/api/users`, params)
-          .catch(err => alert(`Failed to create Mongo Account for ${fields.email}`))
           .then(() => {
             alert(`Account for ${fields.email} created!`);
             history.push('/login');
           })
+          .catch(err => alert(`Failed to create Mongo Account for ${fields.email}`))
       })
       .catch(err => console.log(err))
-
   }
-
-
 
   return (
     <div id="signUp-container" name="signup">
