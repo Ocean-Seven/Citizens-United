@@ -35,12 +35,6 @@ Citizens United was built because our client saw a need for a safe and easy-to-u
 <img src="https://www.pngkit.com/png/detail/225-2254691_9kib-354x415-unnamed-mongodb-logo-svg.png" width="100"/>
 
 
-### Technical Challenges
-
-
-### Challenges that were unexpected
-
-
 ### User Stories
 * As a user, I should be able to sign up as a volunteer or a requester and specify my neighborhood and add a profile pictures
 * As a user, I should be able to login to my account with the same email and password that was created during sign-up
@@ -62,6 +56,3 @@ Citizens United was built because our client saw a need for a safe and easy-to-u
 * As a volunteer or requester, I should be able to chat with the requestor or volunteer
 * As a volunteer or requester, I should be able to mark a task complete
 * As a volunteer or requester, I should be able to rate the requestor or volunteer with a thumbs up or thumbs down
-
-
-### Additional Features to Add
