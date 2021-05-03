@@ -7,18 +7,14 @@ const router = require('./router.js');
 const bodyparser = require('body-parser');
 const port = 3000;
 
-// Apply Middleware
-const server = express();
-server.use(morgan('dev'));
-server.use(express.json());
-server.use(cors());
-server.use(bodyparser.json());
-server.use(bodyparser.urlencoded({ extended: true }));
-
-// Serve up static files
-server.use(express.static(path.join(__dirname, '../client/dist/')));
+// Initialize express server + apply middleware
+const server = express()
+  .use(morgan('dev'))
+  .use(express.json())
+  .use(cors())
+  .use(bodyparser.urlencoded({ extended: true }))
+  .use('/api', router)
+  .use(express.static(path.join(__dirname, '../client/dist/')))
 
 // Connect to router
-server.use('/api', router);
-
-server.listen(port, () => console.log(`LISTENING ON PORT ${port}`));
+server.listen(port, () => console.log(`Listening on port: ${port}`));

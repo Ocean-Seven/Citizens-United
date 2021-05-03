@@ -1,0 +1,61 @@
+#task-view-main-container {
+  display: grid;
+  /* grid-template-columns: repeat(2, 1fr);
+  grid-template-rows:  auto auto */
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "task-view-info-title task-view-info-title"
+    "task-view-volunteer task-view-requestor"
+    "task-view-map task-view-chat";
+  margin-top: 75px;
+}
+
+#task-view-info-title {
+  grid-area: task-view-info-title;
+  text-align: center;
+  border-top: 2px solid #e2e2e2;
+  margin-top: 12px;
+  padding-top: 20px;
+}
+
+#task-view-volunteer {
+  grid-area: task-view-volunteer;
+  place-self: center;
+  margin: 5px;
+}
+
+#task-view-requestor {
+  grid-area: task-view-requestor;
+  place-self: center;
+  margin: 5px;
+}
+
+/* Do not play with map styling or else it will break the entire page */
+#task-view-map {
+  grid-area: task-view-map;
+}
+
+#task-view-chat {
+  grid-area: task-view-chat;
+  width: 80%;
+  place-self: center;
+}
+
+#back-homepage-btn {
+  background-color: #FFAF7A;
+  border: 2px solid #FFAF7A;
+  border-radius: .25rem;
+  margin: 1px;
+}
+
+#task-complete-btn {
+  background-color: #aaf8a7;
+  border: 2px solid #aaf8a7;
+  border-radius: .25rem;
+  margin: 1px;
+}
+
+.map {
+  box-shadow: 5px 5px 4px #e6e6e6;
+}
